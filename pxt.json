@@ -1,5 +1,5 @@
 {
-    "name": "Enjoyneer_Extension",
+    "name": "enjoyneer",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -9,7 +9,8 @@
     "files": [
         "main.blocks",
         "main.ts",
-        "README.md"
+        "README.md",
+        "_locales/zh-tw/extension-string.json"
     ],
     "testFiles": [
         "test.ts"
