@@ -1,0 +1,14 @@
+{
+  "enjoyneer.DHT11Type.Humidity|block": "濕度",
+  "enjoyneer.DHT11Type.TemperatureC|block": "temperature(°C)",
+  "enjoyneer.DHT11Type.TemperatureF|block": "temperature(°F)",
+  "enjoyneer.DHT11|block": "DHT11|port %port|type %readtype",
+  "enjoyneer.MotorRunDual|block": "Motor|speed of Motor1 %speed1|speed of Motor2 %speed2",
+  "enjoyneer.RainDrop|block": "Raindrop|port %hee",
+  "enjoyneer.Tracer|block": "Tracer|port %port|slot %slot",
+  "enjoyneer.TracingLineWithMotors|block": "MoveAlongBlackLine|port %port|speed %speed",
+  "{id:category}Enjoyneer": "Enjoyneer",
+  "{id:group}Actuator": "Actuator",
+  "{id:group}Environment": "Environment",
+  "{id:group}Linefollower": "Linefollower"
+}
