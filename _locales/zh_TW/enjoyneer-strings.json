@@ -1,0 +1,14 @@
+{
+  "enjoyneer.Humidity|block": "DHT11 Humidity |pin $dataPin",
+  "enjoyneer.MotorRunDual|block": "Motor|speed of Motor1 %speed1|speed of Motor2 %speed2",
+  "enjoyneer.RainDrop|block": "Raindrop|port %hee",
+  "enjoyneer.TempType.celsius|block": "Celsius (*C)",
+  "enjoyneer.TempType.fahrenheit|block": "Fahrenheit (*F)",
+  "enjoyneer.Temperature|block": "DHT11 Temperature |pin $dataPin| unit $tempType",
+  "enjoyneer.Tracer|block": "Tracer|port %port|slot %slot",
+  "enjoyneer.TracingLineWithMotors|block": "MoveAlongBlackLine|port %port|speed %speed",
+  "{id:category}Enjoyneer": "Enjoyneer",
+  "{id:group}Actuator": "Actuator",
+  "{id:group}Environment": "Environment",
+  "{id:group}Linefollower": "Linefollower"
+}

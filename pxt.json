@@ -9,7 +9,9 @@
     "files": [
         "main.blocks",
         "main.ts",
-        "README.md"
+        "README.md",
+        "_locales/zh_TW/enjoyneer-strings.json",
+        "_locales/zh_TW/enjoyneer-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"
