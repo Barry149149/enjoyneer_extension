@@ -70,13 +70,14 @@ namespace enjoyneer {
     }
 
     export enum Motors {
-        Motor1 = 13,
-        Motor2 = 15
+        Motor1 = 0,
+        Motor2 = 1
     }
 
-    const MotorDirectionPins = [DigitalPin.P13, DigitalPin.P15]
-
-    const MotorPWMPins = [AnalogPin.P14, AnalogPin.P16]
+    const MotorPins = [
+        [AnalogPin.P13, AnalogPin.P14],
+        [AnalogPin.P15, AnalogPin.P16]
+    ]
 
     export enum TempType {
         //% block="Celsius (*C)"
@@ -91,12 +92,11 @@ namespace enjoyneer {
 
     function queryData(dataPin: DigitalPin): number[] {
         //initialize
+        dataArray = []
+        resultArray = []
+        for (let index = 0; index < 40; index++) dataArray.push(false)
+        for (let index2 = 0; index2 < 5; index2++) resultArray.push(0)
         if (input.runningTime() - time_passed > 5000 || time_passed == 0) {
-            dataArray = []
-            resultArray = []
-            for (let index = 0; index < 40; index++) dataArray.push(false)
-            for (let index2 = 0; index2 < 5; index2++) resultArray.push(0)
-
             //request data
             pins.digitalWritePin(dataPin, 0) //begin protocol, pull down pin
             basic.pause(18)
@@ -145,23 +145,16 @@ namespace enjoyneer {
     }
 
     //% blockID=hhehe block="Motor|port %hee|speed %haa"
+    //% haa.min=-100 haa.max=100
     export function MotorRun(hee: Motors, haa: number): void {
-        let motor_pwm_pin = MotorPWMPins[hee]
-        let motor_direction_pin = MotorDirectionPins[hee]
-
-        if (haa < 0) {
-            pins.digitalWritePin(motor_direction_pin, 0)
-        } else {
-            pins.digitalWritePin(motor_direction_pin, 1)
-        }
-        pins.analogWritePin(motor_pwm_pin, haa / 255 * 1024)
-
+        pins.analogWritePin(MotorPins[hee][0], haa > 0 ? haa / 100 * 1023 : 0)
+        pins.analogWritePin(MotorPins[hee][1], haa < 0 ? -haa / 100 * 1023 : 0)
     }
 
     //% blockId=custom_motor_dual block="Motor|speed of Motor1 %speed1|speed of Motor2 %speed2"
     //% weight=43
-    //% speed1.min=-255 speed1.max=255
-    //% speed2.min=-255 speed2.max=255
+    //% speed1.min=-100 speed1.max=100
+    //% speed2.min=-100 speed2.max=100
     //% group="Actuator" name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function MotorRunDual(speed1: number, speed2: number): void {
         MotorRun(0, speed1);
